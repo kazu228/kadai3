@@ -1,0 +1,44 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <style>
+        .bt{
+            vertical-align: bottom;
+        }
+    </style>
+    {% comment %} <link rel="stylesheet" type="text/css" 
+        href="{% static 'hello/css/style.css' %}" /> {% endcomment %}
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <p>{{message|safe}}</p>
+    {% comment %} {% for i in times %}
+    <td>No. {{ i }}</td> {% endcomment %}
+    {% comment %} <table> {% endcomment %}
+    <form action="{% url 'app:form' %}" method="post" >
+        {% comment %} {% for i in times %}
+        <td>No. {{ i }}</td> {% endcomment %}
+        {% csrf_token %}
+        {% for form in formset %}
+            <div class="row">
+            <td>No.{{ forloop.counter }}</td>
+            <table>
+            {% comment %} <div class="col-sm-4"> {% endcomment %}
+            <div style="display:flex">
+                {{ form.as_p }}
+            </div>
+            {{ formset.management_form }}
+            </table>
+            </div>
+        {% endfor %}
+        <tr><td></td><td><input type="submit" value="送信" class="" name="e-mail"></td></tr> 
+    </form>
+    <a href="{% url 'app:confirm' %}" class="bt">メール内容を確認する</a>
+</body>
+</html>
+{% endblock %}

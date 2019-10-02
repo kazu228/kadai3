@@ -1,0 +1,23 @@
+{% extends "app/base.html" %}
+{% block content %}
+<form action="" method="POST">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                {% if form.errors %}
+                    <p style="color: red;">入力された情報ではログイン ができませんでした。もう一度入力内容をお確かめください。</p>
+                {% endif %}
+                {{ message }}
+                {% for field in form %}
+                    {{ field }}
+                    {{ field.errors }}
+                    <hr>
+                {% endfor %}
+                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
+                <input type="hidden" name="next" value="{{ next }}" /> 
+                {% csrf_token %}
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

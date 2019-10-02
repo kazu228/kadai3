@@ -1,0 +1,42 @@
+{% extends "app/base.html" %}
+{% block content %}
+<meta charset="UTF-8">
+<title>マイページ</title>
+{% comment %} <link rel="stylesheet" type="text/css" href="css/html5reset.css"  /> {% endcomment %}
+<!--&#91;if lt IE 9&#93;>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<!&#91;endif&#93;-->
+<style>
+    .syoukaisya {
+        text-align: left;  /* 文章を左寄せする(※) */
+        float: left;     /* 左端に寄せて、後続を右側へ回り込ませる */
+    }
+    .gosyoukai {
+        text-align: center; /* 文章を右寄せする */
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>List of Excellent Young-man</h1>
+                <div align="right"style="text-decoration:underline"><a href="{% url 'app:logout' %}">ログアウト</a></div>
+        </div>
+    </header>
+    <div>
+        <h2 class="syoukaisya" style="text-decoration:underline">紹介者</h2>
+        <h2 class="gosyoukai" align="right"style="text-decoration:underline">ご紹介</h2>
+    </div>
+    {% for item in data %}
+        <tr>
+            <td>*</td>
+            <td>{{item.department}}</td>
+            <td>{{item.division}}</td>
+            <td>{{item.name}}</td>
+            <br>
+        </tr>
+    {% endfor %}
+    <br>
+    <a href="{% url 'app:form' %}" style="text-decoration:underline">＋紹介者の追加</a>
+</body>
+{% endblock %}
