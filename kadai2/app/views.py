@@ -168,16 +168,6 @@ class Login(LoginView):
         form_class = LoginForm
         template_name = 'app/login.html'
         return super().post(self, request, *args, **kwargs)
-
-    # def post(self, request):
-    #     password = request.POST['password']
-    #     params = {
-    #             'message': "",
-    #             # 'form': LoginForm, 
-    #         }
-    #     if re.search('[A-Z]+', password):
-    #         params["message"] = "大文字やで"
-    #         return render(request, 'app/login.html', params)
     
 
 class Logout(LoginRequiredMixin, LogoutView):
