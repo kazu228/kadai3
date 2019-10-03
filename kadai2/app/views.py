@@ -155,20 +155,30 @@ class Login(LoginView):
     """ログインページ"""
     form_class = LoginForm
     template_name = 'app/login.html'
+    def post(self, request, *args, **kwargs):
+        print(request.POST["password"])
+        params = {
+            'message': "",
+            'form': LoginForm,
+        }
+        password = request.POST["password"]
+        if re.search('[A-Z]+', password):
+            params['message'] = "Caps Lockキーがオンになっていませ んか？"
+            return render(request, 'app/login.html', params)
+        form_class = LoginForm
+        template_name = 'app/login.html'
+        return super().post(self, request, *args, **kwargs)
+
     # def post(self, request):
-    #     form_class = LoginForm
-    #     template_name = 'app/login.html'
     #     password = request.POST['password']
     #     params = {
     #             'message': "",
     #             # 'form': LoginForm, 
     #         }
-    #     if re.search('[A-Z]+', password) != None:
+    #     if re.search('[A-Z]+', password):
     #         params["message"] = "大文字やで"
-    #     return render(request, 'app/login.html', params)
+    #         return render(request, 'app/login.html', params)
     
-def add(a, b):
-    return a+b
 
 class Logout(LoginRequiredMixin, LogoutView):
     """ログアウトページ"""
