@@ -156,7 +156,7 @@ class Login(LoginView):
     form_class = LoginForm
     template_name = 'app/login.html'
     def post(self, request, *args, **kwargs):
-        print(request.POST["password"])
+        # print(request.POST["password"])
         params = {
             'message': "",
             'form': LoginForm,
