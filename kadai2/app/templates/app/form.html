@@ -17,12 +17,14 @@
 <body>
     <h1>{{title}}</h1>
     <p>{{message|safe}}</p>
-    {% comment %} {% for i in times %}
-    <td>No. {{ i }}</td> {% endcomment %}
-    {% comment %} <table> {% endcomment %}
+    <table>
+        <tr>
+            <th>title</th>
+            <th>name</th>
+            <th>datetime</th>
+        </tr>
+    </table>
     <form action="{% url 'app:form' %}" method="post" >
-        {% comment %} {% for i in times %}
-        <td>No. {{ i }}</td> {% endcomment %}
         {% csrf_token %}
         {% for form in formset %}
             <div class="row">
