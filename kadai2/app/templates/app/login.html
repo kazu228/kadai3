@@ -7,15 +7,25 @@
                 {% if form.errors %}
                     <p style="color: red;">入力された情報ではログイン ができませんでした。もう一度入力内容をお確かめください。</p>
                 {% endif %}
-                {{ message }}
-                <p id="login">ログイン画面</p>
+                <p style="color: red">{{ message }}</p>
+                <p id="login">ログイン</p>
+                <p>メールアドレスとパスワードを入力して、ログインボタンをクリックしてください。</p>
                 {% for field in form %}
+                    <p id="label">{{field.label}}:</p>
                     {{ field }}
                     {{ field.errors }}
                     <hr>
                 {% endfor %}
-                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
-                <input type="hidden" name="next" value="{{ next }}" /> 
+                <p>メールアドレスは、案内を受けたメールアドレス、パスワードは、そのメールアドレスに記載のパスワード、半角英数字8文字です。</p>
+                <div
+	                class="center-block"
+	                style="text-align: center; #ffe661; border: 1px; "
+                    >
+                    <button type="submit" class="btn btn-success center-block" >ログイン</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+                {% comment %} <button type="submit" class="btn btn-success center-block" >ログイン</button>
+                <input type="hidden" name="next" value="{{ next }}" />  {% endcomment %}
                 {% csrf_token %}
             </div>
         </div>

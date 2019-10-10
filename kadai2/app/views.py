@@ -147,10 +147,13 @@ class Login(LoginView):
         params = {
             'message': "",
             'form': LoginForm,
+            'item': [
+                'メールアドレス', 'パスワード'
+            ]
         }
         password = request.POST["password"]
         if re.search('[A-Z]+', password):
-            params['message'] = "Caps Lockキーがオンになっていませ んか？"
+            params['message'] = "Caps Lockキーがオンになっていませんか？"
             return render(request, 'app/login.html', params)
         form_class = LoginForm
         template_name = 'app/login.html'

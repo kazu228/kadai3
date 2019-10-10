@@ -35,7 +35,11 @@ class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        word_list = ['メールアドレス', 'パスワード']
+        i = 0
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
-            field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
-    
+            field.label = word_list[i]
+            i += 1
+            # field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
+            
