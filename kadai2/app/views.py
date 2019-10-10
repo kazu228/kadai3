@@ -74,17 +74,6 @@ def mail(request):
 
 
 
-#     def get(self, request):
-#         if (request.method == 'POST'):
-#             department = request.POST['department']
-#             division  = request.POST['division ']
-#             name = request.POST['name']
-#             introducer = introducer(department=department, division=division, name=name)
-#             introducer.save()
-            
-#         return render(request, 'app/form.html', self.params)
-
-
 def form_test(request):
     formset = IntroducerFormSet(request.POST or None)
     if request.method == 'POST' and formset.is_valid():
@@ -140,7 +129,6 @@ def form(request):
         }
 
     return render(request, 'app/form.html', params)
-    # return render(request, 'app/form.html', params)
 
 
 @login_required
@@ -156,7 +144,6 @@ class Login(LoginView):
     form_class = LoginForm
     template_name = 'app/login.html'
     def post(self, request, *args, **kwargs):
-        # print(request.POST["password"])
         params = {
             'message': "",
             'form': LoginForm,

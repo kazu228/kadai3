@@ -8,6 +8,7 @@
                     <p style="color: red;">入力された情報ではログイン ができませんでした。もう一度入力内容をお確かめください。</p>
                 {% endif %}
                 {{ message }}
+                <p id="login">ログイン画面</p>
                 {% for field in form %}
                     {{ field }}
                     {{ field.errors }}
