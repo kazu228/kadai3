@@ -17,6 +17,12 @@
 <body>
     <h1>{{title}}</h1>
     <p>{{message|safe}}</p>
+    <tr>
+        <th>部署名</th>
+        <th>課名</th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+    </tr>
     <form action="{% url 'app:form' %}" method="post" >
         {% csrf_token %}
         {% for form in formset %}
