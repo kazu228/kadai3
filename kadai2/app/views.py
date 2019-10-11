@@ -63,13 +63,11 @@ def send_mail(request):
     msg["From"]=from_email
 
     gmail=smtplib.SMTP("smtp.gmail.com", 587)
-    #gmail.ehlo()
     gmail.starttls()
     gmail.login(from_email, from_password)
     gmail.send_message(msg)
     return redirect(to='/app')
-    #gmail deal with smtp as less scure, 安全性の低いアプリを許可をonへ
-    #そして迷惑メールに振り分けられていると
+    
 
 
 
