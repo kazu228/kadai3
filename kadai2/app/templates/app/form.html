@@ -17,13 +17,6 @@
 <body>
     <h1>{{title}}</h1>
     <p>{{message|safe}}</p>
-    <table>
-        <tr>
-            <th>title</th>
-            <th>name</th>
-            <th>datetime</th>
-        </tr>
-    </table>
     <form action="{% url 'app:form' %}" method="post" >
         {% csrf_token %}
         {% for form in formset %}
