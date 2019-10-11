@@ -39,6 +39,7 @@ def signup(request):
     return render(request, 'app/signup.html', {'form': form})
 
 def confirm(request):
+    # メール本文を確認するページ表示の関数
     return render(request, 'app/confirm.html')
 
 def send_mail(request):
@@ -61,7 +62,7 @@ def send_mail(request):
         List of Excellent Young-manは、みなさんから人事部に 紹介してもいい\
         と思った人たちを登録いただくシステムです。もし人事部から連絡してもよい\
         優秀な方 がいらっしゃいましたら、\
-        ぜひご登録をお願いします。URL:" + url + "パスワード:" + password
+        ぜひご登録をお願いします。<br>URL:" + url + "<br>パスワード:" + password
 
     msg=MIMEText(mails_message, "html")
     msg["Subject"]=subject
