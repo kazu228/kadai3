@@ -1,3 +1,9 @@
-# kadai2
+# Redoit課題
 
-課題の成果を記録中
+## ソースコードの開発環境
+
+- Windows10 
+- minicondaを使用
+- python 3.7.3
+- django 2.1.8
+
