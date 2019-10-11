@@ -42,43 +42,6 @@ def confirm(request):
     # メール本文を確認するページ表示の関数
     return render(request, 'app/confirm.html')
 
-def send_mail(request):
-    #メールを送信する関数
-
-    #送り元
-    from_email="kskkm0228@gmail.com"
-    from_password="KY02282621"
-
-    #送り先
-    to_email="kskkm0228@gmail.com"
-
-    #メールの内容
-    subject="Test"
-    url = "127.0.0.1:8000/app/"
-    password = gen_passwd(8, ascii_letters+digits)  #パスワードを生成する関数
-    # メールの本文
-    mails_message="いつも優秀な人材を紹介してくれてありがとうございます。\
-        これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。\
-        List of Excellent Young-manは、みなさんから人事部に 紹介してもいい\
-        と思った人たちを登録いただくシステムです。もし人事部から連絡してもよい\
-        優秀な方 がいらっしゃいましたら、\
-        ぜひご登録をお願いします。URL:" + url + "パスワード:" + password
-
-    msg=MIMEText(mails_message, "html")
-    msg["Subject"]=subject
-    msg["To"]=to_email
-    msg["From"]=from_email
-
-    gmail=smtplib.SMTP("smtp.gmail.com", 587)
-    gmail.starttls()
-    gmail.login(from_email, from_password)
-    gmail.send_message(msg)
-    return redirect(to='/app')
-    
-
-
-
-
 def form_test(request):
     formset = IntroducerFormSet(request.POST or None)
     if request.method == 'POST' and formset.is_valid():
@@ -108,13 +71,15 @@ def form(request):
     #メールの内容
         subject="Test"
         url = "127.0.0.1:8000/app/"
-        # password = gen_passwd(8, ascii_letters+digits)
-        # message="いつも優秀な人材を紹介してくれてありがとうございます。これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。List of Excellent Young-manは、みなさんから人事部に 紹介してもいいと思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方 がいらっしゃいましたら、ぜひご登録をお願いします \n URL:" + url + "\n Your password:" + password
-
-        # msg=MIMEText(message, "html")
+        
         for i in range(len(mail_list)):
             password = gen_passwd(8, ascii_letters+digits)
-            message="いつも優秀な人材を紹介してくれてありがとうございます。これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。List of Excellent Young-manは、みなさんから人事部に 紹介してもいいと思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方 がいらっしゃいましたら、ぜひご登録をお願いします \n URL:" + url + "\n パスワード" + password
+            message="いつも優秀な人材を紹介してくれてありがとうございます。\
+                これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。\
+                List of Excellent Young-manは、みなさんから人事部に 紹介してもいい\
+                と思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方\
+                がいらっしゃいましたら、ぜひご登録をお願いします <br> URL:" + url + "<br> \
+                パスワード：" + password
             msg=MIMEText(message, "html")
             msg["Subject"]=subject
             msg["To"]=mail_list[i]
