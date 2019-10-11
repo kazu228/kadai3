@@ -41,7 +41,9 @@ def signup(request):
 def confirm(request):
     return render(request, 'app/confirm.html')
 
-def mail(request):
+def send_mail(request):
+    #メールを送信する関数
+
     #送り元
     from_email="kskkm0228@gmail.com"
     from_password="KY02282621"
@@ -52,7 +54,7 @@ def mail(request):
     #メールの内容
     subject="Test"
     url = "127.0.0.1:8000/app/"
-    password = gen_passwd(8, ascii_letters+digits)
+    password = gen_passwd(8, ascii_letters+digits)  #パスワードを生成する関数
     message="いつも優秀な人材を紹介してくれてありがとうございます。これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。List of Excellent Young-manは、みなさんから人事部に 紹介してもいいと思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方 がいらっしゃいましたら、ぜひご登録をお願いします \n URL:" + url + "\n Your password:" + password
 
     msg=MIMEText(message, "html")
