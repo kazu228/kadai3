@@ -41,5 +41,3 @@ class LoginForm(AuthenticationForm):
             field.widget.attrs['class'] = 'form-control'
             field.label = word_list[i]
             i += 1
-            # field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
-            
