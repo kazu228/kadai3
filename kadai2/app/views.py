@@ -55,9 +55,15 @@ def send_mail(request):
     subject="Test"
     url = "127.0.0.1:8000/app/"
     password = gen_passwd(8, ascii_letters+digits)  #パスワードを生成する関数
-    message="いつも優秀な人材を紹介してくれてありがとうございます。これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。List of Excellent Young-manは、みなさんから人事部に 紹介してもいいと思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方 がいらっしゃいましたら、ぜひご登録をお願いします \n URL:" + url + "\n Your password:" + password
+    # メールの本文
+    mails_message="いつも優秀な人材を紹介してくれてありがとうございます。\
+        これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。\
+        List of Excellent Young-manは、みなさんから人事部に 紹介してもいい\
+        と思った人たちを登録いただくシステムです。もし人事部から連絡してもよい\
+        優秀な方 がいらっしゃいましたら、\
+        ぜひご登録をお願いします。URL:" + url + "パスワード:" + password
 
-    msg=MIMEText(message, "html")
+    msg=MIMEText(mails_message, "html")
     msg["Subject"]=subject
     msg["To"]=to_email
     msg["From"]=from_email
