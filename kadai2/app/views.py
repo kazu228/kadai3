@@ -46,7 +46,7 @@ def confirm(request):
 @login_required
 def form(request):
     formset = IntroducerFormSet(request.POST or None ,queryset=introducer.objects.none())
-
+    
     if request.method == 'POST' and formset.is_valid(): #request.method != 'POST' or not formset.is_valid():
         mail_list = []                                  #の短いコードの方で条件分岐した方が読みやすい
     
