@@ -42,13 +42,6 @@ def confirm(request):
     # メール本文を確認するページ表示の関数
     return render(request, 'app/confirm.html')
 
-def form_test(request):
-    formset = IntroducerFormSet(request.POST or None)
-    if request.method == 'POST' and formset.is_valid():
-        formset.save()
-        return redirect('app:top')
-
-    return render(request, 'app/postform.html', {'formset': formset })
 
 @login_required
 def form(request):
