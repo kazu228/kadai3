@@ -25,11 +25,9 @@ from .forms import IntroducerFormSet
 import re
 
 def gen_passwd(length=8, chars=ascii_letters+digits+punctuation):
+    # passwordを生成する関数、8文字のランダムな英数字を返す
     return ''.join([choice(chars) for i in range(length)])
  
-# for i in range(10):
-#     print(gen_passwd(8, ascii_letters+digits))
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
