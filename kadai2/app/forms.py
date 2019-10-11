@@ -32,11 +32,10 @@ IntroducerFormSet = forms.modelformset_factory(
 
 class LoginForm(AuthenticationForm):
     """ログインフォーム"""
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         word_list = ['メールアドレス', 'パスワード']
-        i = 0
+        i = 0   #インスタンスとして利用しないのでselfをつけていないが文法的に問題があるのか、ないのか？
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
             field.label = word_list[i]
