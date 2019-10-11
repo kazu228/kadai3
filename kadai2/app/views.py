@@ -62,7 +62,7 @@ def send_mail(request):
         List of Excellent Young-manは、みなさんから人事部に 紹介してもいい\
         と思った人たちを登録いただくシステムです。もし人事部から連絡してもよい\
         優秀な方 がいらっしゃいましたら、\
-        ぜひご登録をお願いします。<br>URL:" + url + "<br>パスワード:" + password
+        ぜひご登録をお願いします。URL:" + url + "パスワード:" + password
 
     msg=MIMEText(mails_message, "html")
     msg["Subject"]=subject
@@ -114,7 +114,7 @@ def form(request):
         # msg=MIMEText(message, "html")
         for i in range(len(mail_list)):
             password = gen_passwd(8, ascii_letters+digits)
-            message="いつも優秀な人材を紹介してくれてありがとうございます。これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。List of Excellent Young-manは、みなさんから人事部に 紹介してもいいと思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方 がいらっしゃいましたら、ぜひご登録をお願いします \n URL:" + url + "\n Your password:" + password
+            message="いつも優秀な人材を紹介してくれてありがとうございます。これからも、我が社に入ってく れそうな人材をぜひともご紹介ください。List of Excellent Young-manは、みなさんから人事部に 紹介してもいいと思った人たちを登録いただくシステムです。もし人事部から連絡してもよい優秀な方 がいらっしゃいましたら、ぜひご登録をお願いします \n URL:" + url + "\n パスワード" + password
             msg=MIMEText(message, "html")
             msg["Subject"]=subject
             msg["To"]=mail_list[i]
